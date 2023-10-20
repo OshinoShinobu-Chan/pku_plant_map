@@ -2,9 +2,9 @@
 ## 模块和对象
 ### `Response`包
 
->1.`ResponseService`
+>1.`Response`类
 >
->>`string makeResponse(boolean status, string msg, string json)`
+>>`String makeResponse(boolean status, String msg, String data)`
 >>
 >>将`json`风格的字符串`data`转换成统一的响应格式。统一响应格式中`status`表示状态，`0`表示成功，`1`表示失败，`2`表示警告，`msg`是由服务器返回的提示信息，一般情况下成功会返回`OK`，失败会返回失败的原因，`data`是一个`json`对象，其中封装了返回的数据。
 >>```javascript
@@ -16,6 +16,14 @@
 >>    }
 >>}
 >>```
+>>
+>> `String success(String data)`
+>>
+>> 返回成功的结果，`status`被自动设置为`0`，`msg`被自动设置为`OK`。
+>>
+>> `String failed(String msg)`
+>>
+>> 返回失败的结果，`status`被自动设置为`1`，`data`为`null`。
 
 ### `Entity` 包
 
@@ -319,7 +327,7 @@
 >> 
 >> 无参构造函数。
 >> 
->> `Route(Int id)`
+>> `Route(Short id)`
 >>
 >> 构造函数，`id`参数为路线的`id`
 >> 
@@ -338,6 +346,38 @@
 >> `String toString()`
 >>
 >> 返回这个类的`json`风格字符串。
+>>
+> 11.5.`RouteDoc`类
+>
+> 游览路径详情信息的聚合类，继承`WithModifyTime`类和`WithUrl`类，并初始化泛型`T`为`Short`类型。
+>
+>> `RouteDoc()`
+>>
+>> 无参构造函数。
+>>
+>> `RouteDoc(Short id)`
+>>
+>> 构造函数，`id`是游览路径详情的`id`。
+>>
+>> `RouteDoc(Short route_id, String url, Long update_time, Long modify_time)`
+>>
+>> 不包含`id`的构造函数。
+>>
+>> `RouteDoc(Short id, Short route_id, String url, Long update_time, Long modify_time)`
+>>
+>> 完整参数的构造函数。
+>>
+>> `Short getRoute_id()`
+>>
+>> 返回`route_id`属性，即与之对应的游览路径的`id`。
+>>
+>> `void setRoute_id(Short id)`
+>>
+>> 设置`route_id`属性。
+>>
+>> `String toString()`
+>>
+>> 返回这个类型的`json`风格字符串。
 >
 > 12.`SingleCategory`类
 >
@@ -551,3 +591,133 @@
 >> `String toString()`
 >>
 >> 返回这个类的`json`风格字符串。
+
+### `Controller`包
+
+> 1.`IBController`接口
+> 
+> 图鉴功能的控制层接口（用户分享不包含在其中，管理员对图鉴的相关操作方法请继承这个类）
+>
+>> `String getContent(Short plant_id)`
+>>
+>> 请求路径：`/IB/content`，请求方法：`GET`，请求参数与函数参数列表匹配，下同。
+>>
+>> 返回封装在`IBPage`类中的图鉴内容的相关数据。
+>>
+>> `String searchbyPlantName_zh(String name)`
+>>
+>> 请求路径：`/IB/plant/name/zh`，请求方法：`GET`。
+>>
+>> 根据植物的中文名称搜索，返回封装在`SearchResult`类中的搜索结果，每个植物的数据使用`Plant`类封装。
+>>
+>> `String searchbyPlantName_en(String name)`
+>>
+>> 请求路径：`/IB/plant/name/en`，请求方法：`GET`。
+>>
+>> 根据植物的英文名称搜索，返回封装在`SearchResult`类中的搜索结果，每个植物数据使用`Plant`类封装。
+>>
+>> `String searchbyPlantName_la(String name)`
+>>
+>> 请求路径：`/IB/plant/name/la`，请求方法：`GET`。
+>>
+>> 根据植物的拉丁文名称搜索，返回封装在`SearchResult`类中的搜索结果，每个植物数据使用`Plant`类封装。
+>>
+>> `String searchbyPlantCategory_zh(String category)`
+>>
+>> 请求路径：`/IB/plant/category/zh`，请求方法：`GET`。
+>>
+>> 根据植物的生物学分类中的某个层次的中文名称进行匹配搜索，返回封装在`SearchResult`类中的搜索结果，每个植物数据使用`Plant`类封装。
+>>
+>> `String searchbyPlantCategory_en(String category)`
+>>
+>> 请求路径：`/IB/plant/category/en`，请求方法：`GET`。
+>>
+>> 根据植物的生物学分类中的某个层次的英文名称进行匹配搜索，返回封装在`SearchResult`类中的搜索结果，每个植物数据使用`Plant`类封装。
+>>
+>> `String searchbyPlantCategory_la(String category)`
+>>
+>> 请求路径：`/IB/plant/category/la`，请求方法：`GET`。
+>>
+>> 根据植物的生物学分类中的某个层次的拉丁名称进行匹配搜索，返回封装在`SearchResult`类中的搜索结果，每个植物数据使用`Plant`类封装。
+>>
+>> `String searchbyPlantid(Short id)`
+>>
+>> 请求路径：`/IB/plant/id`，请求方法：`GET`
+>>
+>> 根据植物的`id`搜索，返回封装在`Plant`类中的结果。
+>
+> 2.`DistrbutionController`接口
+> 
+> 有关植物分布点功能的控制层接口。
+>
+>> `String getDistribution(Short id, Point rangeX, Point rangeY, Integer resolution)`
+>>
+>> 请求路径：`/distibution`，请求方法：`GET`
+>>
+>> 返回对应`id`的植物的分布点，结果封装在`SearchResult`中。
+>
+> 3.`RouteController`接口
+>
+> 有关游览路径功能的控制层接口。
+>
+>> `String getRoute(Short id)`
+>>
+>> 请求路径：`/route`，请求方法：`GET`
+>>
+>> 返回对应`id`的游览路径（不是游览路径详情）信息，结果封装在`Route`中。
+>>
+>> `String getRouteNow()`
+>>
+>> 请求路径：`/route/now`，请求方法：`GET`
+>>
+>> 返回`status`为`true`，也就是当前推荐的游览路径，结果封装在`Route`中。
+>>
+>> `String getRouteDoc(Short id)`
+>>
+>> 请求路径：`/route/doc`，请求方法：`GET`
+>>
+>> 返回对应`id`的游览路径的详情，结果封装在`RouteDoc`中。
+>>
+>> `String getRouteDocbyId(Short id)`
+>> 
+>> 请求路径：`/route/doc/id`，请求方法：`GET`
+>>
+>> 返回对应`id`的游览路径详情，结果封装在`RouteDoc`中。
+>>
+>> `String getRouteDocNow()`
+>>
+>> 请求路径：`/route/doc/now`，请求方法：`GET`
+>>
+>> 返回当前推荐路径的详情，结果封装在`RouteDoc`中。
+>
+> 4.`RecognitionController`接口
+>
+> 有关拍照识别的控制层接口。
+>
+>> `String getResult(String url)`
+>>
+>> 请求路径：`/recognition`，请求方法：`GET`
+>>
+>> 返回置信度最高的一个识别结果，结果封装在`RecognitionResult`中。
+>>
+>> `String getResults(String url, Short n)`
+>>
+>> 请求路径：`/resognition/results`，请求方法：`GET`
+>>
+>> 返回置信度排名前`n`的识别结果，如果识别结果总数不足`n`则返回全部识别结果，结果封装在`SearchResult`中。
+>
+> 5.`UserShareController`接口
+>
+> 关于用户分享功能的控制层接口。
+>
+>> `String getUserShares(Short plant_id, Short page, Short perpage)`
+>>
+>> 请求路径：`/usershare`，请求方法：`GET`
+>>
+>> 返回用户分享的内容，包括管理员上传的图片。采用分页表示，`page`表示页数，`perpage`表示每页展示的条数，结果封装在`SearchResult`中。
+>>
+>> `String postUserShares(Picture picture)`
+>>
+>> 请求路径：`/usershare`，请求方法：`POST`
+>>
+>> 上传一个用户分享的内容，返回结果中`data`为`null`，只用于表示操作是否成功。
