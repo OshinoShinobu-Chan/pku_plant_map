@@ -604,6 +604,12 @@
 >>
 >> 返回封装在`IBPage`类中的图鉴内容的相关数据。
 >>
+>> `String searchbyName(String name)`
+>>
+>> 请求路径：`/IB/plant/name`，请求方法：`GET`
+>>
+>> 根据传入的名称搜索，不区分输入的语言，得到的结果使用`SearchResult`封装。
+>>
 >> `String searchbyPlantName_zh(String name)`
 >>
 >> 请求路径：`/IB/plant/name/zh`，请求方法：`GET`。
@@ -621,6 +627,12 @@
 >> 请求路径：`/IB/plant/name/la`，请求方法：`GET`。
 >>
 >> 根据植物的拉丁文名称搜索，返回封装在`SearchResult`类中的搜索结果，每个植物数据使用`Plant`类封装。
+>>
+>> `String searchbyPlantCategory(String category)`
+>>
+>> 请求路径：`/IB/plant/category`，请求方法：`GET`
+>>
+>> 根据植物的生物学分类中的某个层次进行匹配搜索，不区分语言，返回结果封装在`SearchResult`类中。
 >>
 >> `String searchbyPlantCategory_zh(String category)`
 >>
