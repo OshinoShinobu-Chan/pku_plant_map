@@ -275,15 +275,11 @@
 >> 
 >> 无参构造函数。
 >>
->> `IBPage(boolean cate, Short id)`
->>
->> 当`cate`参数为`true`时通过页面`id`构造，否则通过`plant_id`构造。
->>
 >> `IBPage(short plant_id, String url, Long update_time, Long modify_time)`
 >>
 >> 不包含`id`的构造函数，如果不指定`update_time`或`modify_time`则使用系统时间自动设置。
 >>
->> `IBPlant(Short id, Short plant_id, Long update_time, Long modify_time)`
+>> `IBPlant(Short id, Short plant_id, String url, Long update_time, Long modify_time)`
 >>
 >> 完整参数的构造函数，如果不指定`update_time`或`modify_time`则使用系统时间自动设置。
 >>
@@ -298,10 +294,6 @@
 >> `Location()`
 >>
 >> 无参构造函数。
->>
->> `Location(int plant_id)`
->> 
->> 构造函数，参数`plant_id`是植物的`id`。
 >> 
 >> `Location(int plant_id, list<Point> locations)`
 >> 
@@ -327,10 +319,6 @@
 >> 
 >> 无参构造函数。
 >> 
->> `Route(Short id)`
->>
->> 构造函数，`id`参数为路线的`id`
->> 
 >> `Route(Boolean status, String url, Long update_time, Long modify_time)`
 >>
 >> 不包含`id`的构造函数，如果不指定`update_time`或`modify_time`则使用系统时间自动设定。
@@ -354,10 +342,6 @@
 >> `RouteDoc()`
 >>
 >> 无参构造函数。
->>
->> `RouteDoc(Short id)`
->>
->> 构造函数，`id`是游览路径详情的`id`。
 >>
 >> `RouteDoc(Short route_id, String url, Long update_time, Long modify_time)`
 >>
@@ -386,10 +370,6 @@
 >> `SingleCategory()`
 >>
 >> 无参构造函数。
->>
->> `SingleCategory(Short id, Short level)`
->>
->> 构造函数，包含`id`属性和`level`属性，即这个项在分类学中的层次，使用本类中的常数`PHYLUM`, `CLASS`, `ORDER`, `FAMILY`, `GENUS`。其他的属性会在调用相应的`get`方法时从数据库中获取。
 >>
 >> `SingleCategory(String name_zh, String name_en, String name_la, Short level)`
 >> 
@@ -510,6 +490,10 @@
 >> `DistributionPoint()`
 >>
 >> 无参构造函数。
+>> 
+>> `DistributionPoint(Double longitude, Double latitude, Integer size, Long update_time, Long modify_time)`
+>>
+>> 不含`id`的构造函数，如果不指定`update_time`或`modify_time`属性，则根据系统时间自动设定。
 >>
 >> `DistributionPoint(Integer id, Double longitude, Double latitude, Integer size, Long update_time, Long modify_time)`
 >>
@@ -518,7 +502,6 @@
 >> `Integer getSize()`
 >>
 >> 返回`Size`属性，即这个分布点是由多少个分布点合成的。
->>
 >>
 >> `void setSize(Integer Size)`
 >>
