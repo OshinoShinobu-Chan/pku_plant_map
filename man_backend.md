@@ -672,6 +672,12 @@
 >>
 >> 返回`status`为`true`，也就是当前推荐的游览路径，结果封装在`Route`中。
 >>
+>> `String getRouteAll()`
+>>
+>> 请求路径：`/route/all`，请求方法：`GET`
+>>
+>> 返回数据库中的所有游览路径，结果封装在`SearchResult`中。
+>>
 >> `String getRouteDoc(Short id)`
 >>
 >> 请求路径：`/route/doc`，请求方法：`GET`
@@ -721,3 +727,82 @@
 >> 请求路径：`/usershare`，请求方法：`POST`
 >>
 >> 上传一个用户分享的内容，返回结果中`data`为`null`，只用于表示操作是否成功。
+
+### `Service`包
+
+> 1.`IBService`接口
+>
+> 图鉴功能相关的服务层接口。
+>
+>> `Plant getContent(Short plant_id)`
+>>
+>> 获取图鉴的内容。
+>>
+>> `Plant searchPlant(Short method, String keyword)`
+>>
+>> 处理所有查询的服务，参数`method`使用定义在枚举类`searchMethod`中的的常量。
+>>
+>> `Plant serchPlantbyId(Short id)`
+>>
+>> 根据`id`查询植物。
+>
+> 2.`DistributionService`接口
+>
+> 分布点功能相关的服务层接口。
+>
+>> `SearchResult getDistribution(Short id, Point rangeX, Point rangeY, Integer resolution)`
+>>
+>> 返回对分布点的查询，在这个函数中对分辨率进行处理。
+>
+> 3.`RouteService`接口
+>
+> 游览路线相关功能的服务层接口。
+>
+>> `Route getRoute(Short id)`
+>> 
+>> 返回对应`id`的游览路径。
+>>
+>> `Route getRouteNow()`
+>>
+>> 返回`status`为`true`的游览路径，即当前推荐的游览路径。
+>>
+>> `SearchResult getRouteAll()`
+>>
+>> 返回所有的游览路径。
+>>
+>> `RouteDoc getRouteDoc(Short id)`
+>>
+>> 返回对应`id`的游览路线详情。
+>>
+>> `RouteDoc getRouteDocbyId(Short id)`
+>>
+>> 返回对应`id`的游览路线的详情。
+>>
+>> `RouteDoc getRouteDocNow()`
+>>
+>> 返回当前推荐游览路径的游览路径详情。
+>
+> 4.`RecognitionService`接口
+>
+> 拍照识别相关功能的服务层接口。
+>
+>> `RecognitionResult getResult(String url)`
+>>
+>> 需要识别的照片的路径为`url`，返回置信度最高的一个结果。
+>>
+>> `SearchResult getResults(String url, Short n)`
+>>
+>> 需要识别的照片的路径为`url`，返回置信度排名前`n`的结果，如果总结果数不足`n`则返回全部结果。
+>>
+>
+> 5.`UserShareService`接口
+>
+> 用户分享相关功能的服务层接口。
+>
+>> `SearchResult getUserShares(Short plant_id, Short start, Short count)`
+>>
+>> 根据植物`id`，返回相应的用户分享条目，`start`指返回的结果从第几个条目开始，`count`指返回的结果最多几条，如果查询到的结果数量不足`count`则返回全部结果。
+>>
+>> `void AddUserShare(Picture picture)`
+>>
+>> 上传用户分享的照片。
