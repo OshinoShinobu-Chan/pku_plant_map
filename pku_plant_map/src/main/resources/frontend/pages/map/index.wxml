@@ -1,0 +1,2 @@
+<!--pages/map/index.wxml-->
+<image class="map-image" src="{{img}}"></image>

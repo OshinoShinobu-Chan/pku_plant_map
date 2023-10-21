@@ -1,0 +1,14 @@
+<view class="container">
+  <image class="table" src="/img/table.jpeg"></image>
+  <image class="book" src="/img/book.jpeg"></image>
+  <swiper class="swiper-box"  autoplay interval="2000" circular="true" >
+    <block wx:for="{{tabList}}" wx:key="*this">
+      <block>
+        <swiper-item>
+          <image class="swiper-item" src="{{item.img}}"></image> 
+        </swiper-item>
+      </block>
+    </block>
+  </swiper>
+      
+</view>

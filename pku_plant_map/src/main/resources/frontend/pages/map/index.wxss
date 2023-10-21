@@ -1,0 +1,4 @@
+/* pages/map/index.wxss */
+.map-image{
+  height:1000rpx;
+}

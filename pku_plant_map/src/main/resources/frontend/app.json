@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/recog/index",
+    "pages/map/index"
+  ],
+  "tabBar": {
+    "custom": true,
+    "color": "#000000",
+    "selectedColor": "#3cc51f",
+    "backgroundColor": "#8b0012",
+    "list":  [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "",
+        "selectedIconPath": "",
+        "text": "图鉴"
+      },
+      {
+        "pagePath": "pages/recog/index",
+        "iconPath": "img/1-n.png",
+        "selectedIconPath": "img/1-y.png",
+        "text": ""
+      },
+      {
+        "pagePath": "pages/map/index",
+        "iconPath": "",
+        "selectedIconPath": "",
+        "text": "地图"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#efefef",
+    "navigationBarTitleText": "燕园植物地图",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

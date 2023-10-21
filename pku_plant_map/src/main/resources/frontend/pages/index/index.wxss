@@ -1,0 +1,30 @@
+/**index.wxss**/
+swiper{
+  height:350rpx;
+  width:70%;
+  position: absolute;
+  z-index: 2;
+  padding:100rpx 0;
+}
+.swiper-item{
+  height: 100%;
+  width: 100%;
+  border-radius: 30rpx;
+}
+.table{
+  height : 1040rpx;
+}
+.book{
+  position: absolute;
+  width:90%;
+  height:80%;
+  padding:40rpx 0;
+  z-index: 1;
+}
+.book_cover{
+  position: absolute;
+  width:90%;
+  height:80%;
+  padding:40rpx 0;
+  z-index: 10;
+}
