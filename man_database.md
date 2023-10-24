@@ -8,7 +8,7 @@
 | `id`    | `smallint` | `primary key` | 每种植物的唯一标识 |
 | `name_zh` | `varchar(10)` | `unique` | 植物的中文名称 |
 | `name_en` | `varchar(100)` | `unique` | 植物的英文名称 |
-| `name_la` | `varchar(100)` | `unique` | 植物的中文名称 |
+| `name_la` | `varchar(100)` | `unique` | 植物的拉丁名称 |
 
 2. `tb_category`
 
@@ -29,7 +29,7 @@
 | `id` | `smallint` | `primary key` | 每个分类的唯一标识 |
 | `name_zh` | `varchar(10)` | `unique` | 分类的中文名称 |
 | `name_en` | `varchar(100)` | `unique` | 分类的英文名称 |
-| `name_la` | `varchar(100)` | `unique` | 分类的中文名称 |
+| `name_la` | `varchar(100)` | `unique` | 分类的拉丁名称 |
 
 4. `tb_class`
 
@@ -38,7 +38,7 @@
 | `id` | `smallint` | `primary key` | 每个分类的唯一标识 |
 | `name_zh` | `varchar(10)` | `unique` | 分类的中文名称 |
 | `name_en` | `varchar(100)` | `unique` | 分类的英文名称 |
-| `name_la` | `varchar(100)` | `unique` | 分类的中文名称 |
+| `name_la` | `varchar(100)` | `unique` | 分类的拉丁名称 |
 
 5. `tb_order`
 
@@ -47,7 +47,7 @@
 | `id` | `smallint` | `primary key` | 每个分类的唯一标识 |
 | `name_zh` | `varchar(10)` | `unique` | 分类的中文名称 |
 | `name_en` | `varchar(100)` | `unique` | 分类的英文名称 |
-| `name_la` | `varchar(100)` | `unique` | 分类的中文名称 |
+| `name_la` | `varchar(100)` | `unique` | 分类的拉丁名称 |
 
 6. `tb_family`
 
@@ -56,7 +56,7 @@
 | `id` | `smallint` | `primary key` | 每个分类的唯一标识 |
 | `name_zh` | `varchar(10)` | `unique` | 分类的中文名称 |
 | `name_en` | `varchar(100)` | `unique` | 分类的英文名称 |
-| `name_la` | `varchar(100)` | `unique` | 分类的中文名称 |
+| `name_la` | `varchar(100)` | `unique` | 分类的拉丁名称 |
 
 7. `tb_genus`
 
@@ -65,7 +65,7 @@
 | `id` | `smallint` | `primary key` | 每个分类的唯一标识 |
 | `name_zh` | `varchar(10)` | `unique` | 分类的中文名称 |
 | `name_en` | `varchar(100)` | `unique` | 分类的英文名称 |
-| `name_la` | `varchar(100)` | `unique` | 分类的中文名称 |
+| `name_la` | `varchar(100)` | `unique` | 分类的拉丁名称 |
 
 8. `tb_ibpage`
 
